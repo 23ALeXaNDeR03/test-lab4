@@ -1,5 +1,5 @@
 from behave import given, when, then
-from eshop import Product
+from app.eshop import Product
 
 @given(u'I want to create a product')
 def step_given_create_product(context):
