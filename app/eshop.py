@@ -27,7 +27,7 @@ class Product:
 class ShoppingCart:
     products: Dict[Product, int]
     def __init__(self):
-        self.products = dict()
+        self.products = {}
     def contains_product(self, product):
         return product in self.products
     def calculate_total(self):
@@ -59,7 +59,8 @@ class Order:
             due_date = datetime.now(timezone.utc) + timedelta(seconds=3)
         product_ids = self.cart.submit_cart_order()
         print(due_date)
-        return self.shipping_service.create_shipping(shipping_type, product_ids, self.order_id, due_date)
+        return self.shipping_service.create_shipping(shipping_type, product_ids,
+                                                     self.order_id, due_date)
 
 @dataclass()
 class Shipment:
@@ -68,4 +69,3 @@ class Shipment:
 
     def check_shipping_status(self):
         return self.shipping_service.check_status(self.shipping_id)
-
